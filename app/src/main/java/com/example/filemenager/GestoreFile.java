@@ -1,6 +1,7 @@
 package com.example.filemenager;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.util.Log;
 
@@ -66,6 +67,27 @@ public class GestoreFile {
             String testoDaRestituire = "";
             try {
 
+                BufferedReader bfr = new BufferedReader(new InputStreamReader(is));
+
+                while ((testoDaRestituire = bfr.readLine())!=null){
+                    sb.append(testoDaRestituire);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                Log.d("eccezzioneuno", "file non letto");
+            } catch (IOException e) {
+
+            }
+            return sb.toString();
+        }
+
+        public String LeggiAssetsFile(Context c){
+            AssetManager ass= c.getAssets();
+            String es;
+            StringBuilder sb = new StringBuilder();
+            String testoDaRestituire = "";
+            try {
+                InputStream is = ass.open("assProva");
                 BufferedReader bfr = new BufferedReader(new InputStreamReader(is));
 
                 while ((testoDaRestituire = bfr.readLine())!=null){

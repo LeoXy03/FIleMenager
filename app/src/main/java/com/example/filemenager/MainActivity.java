@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtContenuto;
     GestoreFile gf;
     Button btnProva;
+    Button btnAssets;
 
 
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnScrivi = (Button) findViewById(R.id.btnW);
         txtContenuto = (TextView) findViewById(R.id.nFile);
         btnProva  = findViewById(R.id.raw);
+        btnAssets = findViewById(R.id.Assests);
         gf = new GestoreFile();
 
         btnLeggi.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), gf.LeggiRawFile(getApplicationContext()), Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnAssets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), gf.LeggiAssetsFile(getApplicationContext()), Toast.LENGTH_SHORT).show();
             }
         });
     }
