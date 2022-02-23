@@ -1,16 +1,16 @@
 package com.example.filemenager;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-
-import javax.sql.StatementEvent;
 
 public class GestoreFile {
     String nomeFile;
@@ -58,4 +58,25 @@ public class GestoreFile {
         }
         return esito;
     }
+        public String LeggiRawFile(Context c){
+            Resources res = c.getResources();
+            InputStream is = res.openRawResource(R.raw.prova);
+            String es;
+            StringBuilder sb = new StringBuilder();
+            String testoDaRestituire = "";
+            try {
+
+                BufferedReader bfr = new BufferedReader(new InputStreamReader(is));
+
+                while ((testoDaRestituire = bfr.readLine())!=null){
+                    sb.append(testoDaRestituire);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                Log.d("eccezzioneuno", "file non letto");
+            } catch (IOException e) {
+
+            }
+            return sb.toString();
+        }
 }

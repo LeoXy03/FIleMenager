@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnScrivi;
     TextView txtContenuto;
     GestoreFile gf;
+    Button btnProva;
 
 
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btnLeggi = (Button) findViewById(R.id.btnR);
         btnScrivi = (Button) findViewById(R.id.btnW);
         txtContenuto = (TextView) findViewById(R.id.nFile);
+        btnProva  = findViewById(R.id.raw);
         gf = new GestoreFile();
 
         btnLeggi.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String esito = gf.scrivFile("fileorigin.txt",getApplicationContext());
                 Toast.makeText(getApplicationContext(), esito, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnProva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), gf.LeggiRawFile(getApplicationContext()), Toast.LENGTH_SHORT).show();
             }
         });
     }
